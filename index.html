@@ -29,31 +29,53 @@
       <img src="https://images.unsplash.com/photo-1549187774-b4e9b0445b3e?q=80&w=1200&auto=format&fit=crop" alt="Tappeto moderno" class="hero-img">
     </section>
 
-    <section id="galleria" class="container galleria">
-      <h3>Galleria</h3>
-      <div class="grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" alt="Tappeto 1">
-          <h4>Modello Aster</h4>
-          <p>160×230 cm · Beige, Grigio</p>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1549187774-b4e9b0445b3e?q=80&w=800&auto=format&fit=crop" alt="Tappeto 2">
-          <h4>Modello Tuft</h4>
-          <p>120×180 cm · Naturale, Nero</p>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1522661067900-02c5f8f2f166?q=80&w=800&auto=format&fit=crop" alt="Tappeto 3">
-          <h4>Modello Linea</h4>
-          <p>200×300 cm · Crema, Sabbia</p>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1600585154342-3b0f4a2dbf2f?q=80&w=800&auto=format&fit=crop" alt="Tappeto 4">
-          <h4>Modello Minimal</h4>
-          <p>150×240 cm · Grigio chiaro</p>
-        </div>
-      </div>
-    </section>
+   <section id="galleria" class="container galleria">
+  <h3>Galleria</h3>
+
+  <!-- Pulsanti filtro -->
+  <div id="filter-buttons">
+    <button class="filter-btn" data-filter="all">Tutti</button>
+    <button class="filter-btn" data-filter="beige">Beige</button>
+    <button class="filter-btn" data-filter="grigio">Grigio</button>
+    <button class="filter-btn" data-filter="tufting">Tufting</button>
+    <button class="filter-btn" data-filter="personalizzato">Personalizzati</button>
+  </div>
+
+  <!-- Griglia tappeti -->
+  <div class="grid">
+    <div class="card" data-category="beige personalizzato">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" alt="Tappeto 1">
+      <h4>Modello Aster</h4>
+      <p>160×230 cm · Beige</p>
+    </div>
+    <div class="card" data-category="grigio tufting">
+      <img src="https://images.unsplash.com/photo-1549187774-b4e9b0445b3e?q=80&w=800&auto=format&fit=crop" alt="Tappeto 2">
+      <h4>Modello Tuft</h4>
+      <p>120×180 cm · Grigio</p>
+    </div>
+    <div class="card" data-category="personalizzato">
+      <img src="https://images.unsplash.com/photo-1522661067900-02c5f8f2f166?q=80&w=800&auto=format&fit=crop" alt="Tappeto 3">
+      <h4>Modello Linea</h4>
+      <p>200×300 cm · Crema</p>
+    </div>
+    <div class="card" data-category="grigio tufting personalizzato">
+      <img src="https://images.unsplash.com/photo-1600585154342-3b0f4a2dbf2f?q=80&w=800&auto=format&fit=crop" alt="Tappeto 4">
+      <h4>Modello Minimal</h4>
+      <p>150×240 cm · Grigio chiaro</p>
+    </div>
+    <div class="card" data-category="beige tufting">
+      <img src="https://images.unsplash.com/photo-1598300055004-6a2f660bfb31?q=80&w=800&auto=format&fit=crop" alt="Tappeto 5">
+      <h4>Modello Lumi</h4>
+      <p>170×250 cm · Beige</p>
+    </div>
+    <div class="card" data-category="personalizzato">
+      <img src="https://images.unsplash.com/photo-1600607689507-3e0e3b5c5d1c?q=80&w=800&auto=format&fit=crop" alt="Tappeto 6">
+      <h4>Modello Nova</h4>
+      <p>180×280 cm · Crema</p>
+    </div>
+  </div>
+</section>
+
 
     <section id="chi-siamo" class="container about">
       <h3>Chi siamo</h3>
@@ -79,5 +101,24 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script>
+const buttons = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.grid .card');
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.dataset.filter;
+
+    cards.forEach(card => {
+      const categories = card.dataset.category.split(' ');
+      if(filter === 'all' || categories.includes(filter)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
