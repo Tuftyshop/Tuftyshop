@@ -123,3 +123,25 @@ footer.site-footer {
   transform: translateY(20px);
   pointer-events: none; /* evita che si clicchi sulla card nascosta */
 }
+/* Ombra elegante con transizione */
+.grid .card {
+  transition: all 0.3s ease, box-shadow 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ombra leggera di default */
+  border-radius: 8px;
+  background-color: #fff; /* assicura contrasto con sfondo grigio */
+}
+
+/* Ombra quando si passa sopra la card */
+.grid .card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* ombra più evidente */
+  transform: translateY(-3px); /* leggero sollevamento */
+}
+
+/* Card nascoste dal filtro */
+.grid .card.hide {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
