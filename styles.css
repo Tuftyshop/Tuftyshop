@@ -111,3 +111,15 @@ footer.site-footer {
   .hero { grid-template-columns: 1fr; }
   .nav { display: none; }
 }
+/* Animazione per le card quando appaiono/scompaiono */
+.grid .card {
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.grid .card.hide {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none; /* evita che si clicchi sulla card nascosta */
+}
