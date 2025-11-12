@@ -290,12 +290,27 @@ body {
 }
 
 .logo-animato img {
-  width: 150px; /* dimensione del logo */
+  width: 120px; /* dimensione base */
+  max-width: 25vw; /* non supera un quarto della larghezza dello schermo */
   height: auto;
-  animation: pulseLogo 3s ease-in-out infinite; /* animazione */
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4)); /* ombra chiara */
+  animation: pulseLogo 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+  transition: width 0.3s ease;
 }
 
+/* su schermi grandi (computer) */
+@media (min-width: 1024px) {
+  .logo-animato img {
+    width: 180px; /* più grande ma equilibrato */
+  }
+}
+
+/* su telefono o tablet piccoli */
+@media (max-width: 600px) {
+  .logo-animato img {
+    width: 100px; /* leggermente più piccolo su mobile */
+  }
+}
 /* effetto che lo fa diventare grande e poi torna piccolo */
 @keyframes pulseLogo {
   0%, 100% {
